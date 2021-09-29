@@ -91,9 +91,7 @@ BOARD_KERNEL_CMDLINE := \
     loop.max_part=7 androidboot.selinux=permissive
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 BOARD_KERNEL_PAGESIZE := 4096
-#TARGET_KERNEL_SOURCE := kernel/nokia/sdm660
-#TARGET_KERNEL_CLANG_COMPILE := true
-#TARGET_KERNEL_CLANG_VERSION := r383902b
+TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/Image.gz-dtb
 
 # Properties
 TARGET_ODM_PROP += $(COMMON_PATH)/odm.prop
