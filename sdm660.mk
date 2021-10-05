@@ -125,11 +125,11 @@ PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml
 
 # Bluetooth
-PRODUCT_PACKAGES += \
-    android.hardware.bluetooth@1.0 \
-    audio.bluetooth.default \
-    android.hardware.bluetooth.audio@2.0-impl \
-    vendor.qti.hardware.btconfigstore@1.0.vendor
+#PRODUCT_PACKAGES += \
+ #   android.hardware.bluetooth@1.0 \
+ #   audio.bluetooth.default \
+#    android.hardware.bluetooth.audio@2.0-impl \
+#    vendor.qti.hardware.btconfigstore@1.0.vendor
 
 # Boot Control
 PRODUCT_PACKAGES += \
@@ -145,16 +145,16 @@ PRODUCT_PACKAGES += \
     android.hardware.boot@1.0-service
 
 # Camera
-PRODUCT_PACKAGES += \
-    android.hardware.camera.device@3.5 \
-    android.hardware.camera.provider@2.4-impl \
-    android.hardware.camera.provider@2.4-service \
-    android.hardware.camera.provider@2.5 \
-    Snap \
-    vendor.qti.hardware.camera.device@1.0
+#PRODUCT_PACKAGES += \
+#    android.hardware.camera.device@3.5 \
+#    android.hardware.camera.provider@2.4-impl \
+#    android.hardware.camera.provider@2.4-service \
+#    android.hardware.camera.provider@2.5 \
+#    Snap \
+#    vendor.qti.hardware.camera.device@1.0
 
-PRODUCT_PACKAGES += \
-    libshim_megvii
+#PRODUCT_PACKAGES += \
+#    libshim_megvii
 
 # Component overrides
 PRODUCT_COPY_FILES += \
@@ -191,10 +191,10 @@ PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1-service
 
 # FM
-PRODUCT_PACKAGES += \
-    FM2 \
-    libqcomfm_jni \
-    qcom.fmradio
+#PRODUCT_PACKAGES += \
+#    FM2 \
+#    libqcomfm_jni \
+#    qcom.fmradio
 
 # Framework Detect
 PRODUCT_PACKAGES += \
@@ -257,11 +257,7 @@ PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service \
     lights.sdm660
 
-# LiveDisplay
-PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@2.0-service-sdm
-
-# Media
+#Media
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/media/media_profiles_V1_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml \
     $(COMMON_PATH)/media/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
@@ -310,7 +306,7 @@ PRODUCT_PACKAGES += \
 
 # QTI
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/telephony_product_privapp-permissions-qti.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/telephony_product_privapp-permissions-qti.xml \
+ #   $(COMMON_PATH)/configs/telephony_product_privapp-permissions-qti.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/telephony_product_privapp-permissions-qti.xml \
     $(COMMON_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt \
     $(COMMON_PATH)/configs/privapp-permissions-qti.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-qti.xml \
     $(COMMON_PATH)/configs/qti_whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/qti_whitelist.xml \
@@ -365,21 +361,17 @@ PRODUCT_SOONG_NAMESPACES += \
     $(COMMON_PATH)
 
 # Telephony-ext
-PRODUCT_PACKAGES += \
-    ims-ext-common \
-    ims_ext_common.xml \
-    qti-telephony-hidl-wrapper \
-    qti_telephony_hidl_wrapper.xml \
-    qti-telephony-utils \
-    qti_telephony_utils.xml \
-    telephony-ext
+#PRODUCT_PACKAGES += \
+#    ims-ext-common \
+#    ims_ext_common.xml \
+#    qti-telephony-hidl-wrapper \
+#    qti_telephony_hidl_wrapper.xml \
+#    qti-telephony-utils \
+#    qti_telephony_utils.xml \
+#    telephony-ext
 
-PRODUCT_BOOT_JARS += \
-    telephony-ext
-
-# Trust
-PRODUCT_PACKAGES += \
-    vendor.lineage.trust@1.0-service
+#PRODUCT_BOOT_JARS += \
+#    telephony-ext
 
 # Update engine
 PRODUCT_PACKAGES += \
