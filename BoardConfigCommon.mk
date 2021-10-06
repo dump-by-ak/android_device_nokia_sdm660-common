@@ -15,6 +15,12 @@
 #
 
 BOARD_VENDOR := nokia
+COMMON_PATH := device/xiaomi/sdm660-common
+
+# Bootloader
+TARGET_BOOTLOADER_BOARD_NAME := sdm660
+TARGET_NO_BOOTLOADER := true
+
 
 COMMON_PATH := device/nokia/sdm660-common
 
@@ -34,6 +40,7 @@ TARGET_NO_BOOTLOADER := true
 
 # Build System
 BUILD_BROKEN_DUP_RULES := true
+BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "qualcomm-hidl"
