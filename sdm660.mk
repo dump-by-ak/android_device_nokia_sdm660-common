@@ -28,6 +28,11 @@ DEVICE_PACKAGE_OVERLAYS += \
 
 PRODUCT_ENFORCE_RRO_TARGETS += *
 
+#aa
+PRODUCT_BOARD_PLATFORM := sdm660
+PRODUCT_USES_QCOM_HARDWARE := true
+PRODUCT_VENDOR_KERNEL_HEADERS := hardware/qcom/msm8998/kernel-headers
+
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.bluetooth.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth.xml \
@@ -97,6 +102,18 @@ PRODUCT_PACKAGES += \
     android.hardware.audio@5.0-impl \
     android.hardware.audio.service \
     android.hardware.audio.effect@5.0-impl \
+    android.hardware.audio.effect@7.0-impl \
+    android.hardware.audio4.0-service.vendor \
+    android.hardware.audio@2.0-service.vendor \
+    android.hardware.audio.common@4.0.vendor \
+    android.hardware.audio.common@5.0.vendor \
+    android.hardware.audio.common@6.0.vendor \
+    android.hardware.audio@2.0.vendor \
+    android.hardware.audio@4.0.vendor \
+    android.hardware.audio@5.0.vendor \
+    android.hardware.audio@6.0.vendor \
+    android.hardware.audio@2.0-service \
+    android.hardware.audio4.0-service \
     android.hardware.soundtrigger@2.2-impl \
     audio.a2dp.default \
     audio.primary.sdm660 \
@@ -107,7 +124,8 @@ PRODUCT_PACKAGES += \
     libqcompostprocbundle \
     libqcomvisualizer \
     libqcomvoiceprocessing \
-    libvolumelistener
+    libvolumelistener \
+    tinymix
 
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
@@ -125,11 +143,11 @@ PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml
 
 # Bluetooth
-#PRODUCT_PACKAGES += \
- #   android.hardware.bluetooth@1.0 \
- #   audio.bluetooth.default \
-#    android.hardware.bluetooth.audio@2.0-impl \
-#    vendor.qti.hardware.btconfigstore@1.0.vendor
+PRODUCT_PACKAGES += \
+   android.hardware.bluetooth@1.0 \
+   audio.bluetooth.default \
+    android.hardware.bluetooth.audio@2.0-impl \
+    vendor.qti.hardware.btconfigstore@1.0.vendor
 
 # Boot Control
 PRODUCT_PACKAGES += \
@@ -145,16 +163,16 @@ PRODUCT_PACKAGES += \
     android.hardware.boot@1.0-service
 
 # Camera
-#PRODUCT_PACKAGES += \
-#    android.hardware.camera.device@3.5 \
-#    android.hardware.camera.provider@2.4-impl \
-#    android.hardware.camera.provider@2.4-service \
-#    android.hardware.camera.provider@2.5 \
-#    Snap \
-#    vendor.qti.hardware.camera.device@1.0
+PRODUCT_PACKAGES += \
+    android.hardware.camera.device@3.5 \
+    android.hardware.camera.provider@2.4-impl \
+    android.hardware.camera.provider@2.4-service \
+    android.hardware.camera.provider@2.5 \
+    Snap \
+    vendor.qti.hardware.camera.device@1.0
 
-#PRODUCT_PACKAGES += \
-#    libshim_megvii
+PRODUCT_PACKAGES += \
+    libshim_megvii
 
 # Component overrides
 PRODUCT_COPY_FILES += \
@@ -191,11 +209,10 @@ PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1-service
 
 # FM
-#PRODUCT_PACKAGES += \
-#    FM2 \
-#    libqcomfm_jni \
-#    qcom.fmradio
-
+PRODUCT_PACKAGES += \
+    FM2 \
+    libqcomfm_jni \
+    qcom.fmradio
 # Framework Detect
 PRODUCT_PACKAGES += \
     libqti_vndfwk_detect \
@@ -306,7 +323,7 @@ PRODUCT_PACKAGES += \
 
 # QTI
 PRODUCT_COPY_FILES += \
- #   $(COMMON_PATH)/configs/telephony_product_privapp-permissions-qti.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/telephony_product_privapp-permissions-qti.xml \
+    $(COMMON_PATH)/configs/telephony_product_privapp-permissions-qti.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/telephony_product_privapp-permissions-qti.xml \
     $(COMMON_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt \
     $(COMMON_PATH)/configs/privapp-permissions-qti.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-qti.xml \
     $(COMMON_PATH)/configs/qti_whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/qti_whitelist.xml \
@@ -361,14 +378,14 @@ PRODUCT_SOONG_NAMESPACES += \
     $(COMMON_PATH)
 
 # Telephony-ext
-#PRODUCT_PACKAGES += \
-#    ims-ext-common \
-#    ims_ext_common.xml \
-#    qti-telephony-hidl-wrapper \
-#    qti_telephony_hidl_wrapper.xml \
-#    qti-telephony-utils \
-#    qti_telephony_utils.xml \
-#    telephony-ext
+PRODUCT_PACKAGES += \
+    ims-ext-common \
+    ims_ext_common.xml \
+    qti-telephony-hidl-wrapper \
+    qti_telephony_hidl_wrapper.xml \
+    qti-telephony-utils \
+    qti_telephony_utils.xml \
+    telephony-ext
 
 #PRODUCT_BOOT_JARS += \
 #    telephony-ext
@@ -395,6 +412,9 @@ $(call inherit-product, build/target/product/verity.mk)
 PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.0-impl \
     android.hardware.vibrator@1.0-service
+
+#vndk
+#PRODUCT_EXTRA_VNDK_VERSIONS := 31
 
 # Weaver
 PRODUCT_PACKAGES += \
