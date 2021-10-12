@@ -375,8 +375,8 @@ PRODUCT_COPY_FILES += \
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
-    $(COMMON_PATH)
-
+    $(COMMON_PATH) \
+    vendor/qcom/opensource/power
 # Telephony-ext
 PRODUCT_PACKAGES += \
     ims-ext-common \
