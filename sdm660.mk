@@ -135,8 +135,8 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
-    android.hardware.bluetooth@1.0 \
-    audio.bluetooth.default \
+   android.hardware.bluetooth@1.0 \
+   audio.bluetooth.default \
     android.hardware.bluetooth.audio@2.0-impl \
     vendor.qti.hardware.btconfigstore@1.0.vendor
 
@@ -238,6 +238,10 @@ PRODUCT_PACKAGES += \
     libhidltransport.vendor \
     libhwbinder \
     libhwbinder.vendor
+
+#init Sripts
+PRODUCT_PACKAGES += \
+    init.logcat.rc
 
 # IPACM
 PRODUCT_PACKAGES += \
@@ -404,7 +408,7 @@ PRODUCT_PACKAGES += \
     qti_telephony_utils.xml \
     telephony-ext
 
-PRODUCT_BOOT_JARS += \
+#PRODUCT_BOOT_JARS += \
     telephony-ext
 
 # Update engine
@@ -430,6 +434,9 @@ PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.0-impl \
     android.hardware.vibrator@1.0-service
 
+#vndk
+#PRODUCT_EXTRA_VNDK_VERSIONS := 31
+
 # Weaver
 PRODUCT_PACKAGES += \
     android.hardware.weaver@1.0
@@ -449,7 +456,7 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf \
     $(COMMON_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini
 
-#a12
+#trail
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth@1.0.vendor \
     android.hardware.keymaster@1.0.vendor \

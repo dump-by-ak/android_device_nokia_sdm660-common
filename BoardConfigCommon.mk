@@ -35,6 +35,9 @@ TARGET_NO_BOOTLOADER := true
 # Build System
 BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
+BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
+RELAX_USES_LIBRARY_CHECK := true
+BUILD_BROKEN_USES_BUILD_COPY_HEADERS := true
 
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "qualcomm-hidl"
@@ -89,9 +92,11 @@ BOARD_KERNEL_CMDLINE := \
     console=ttyMSM0,115200,n8 androidboot.console=ttyMSM0 earlycon=msm_serial_dm,0xc170000 androidboot.hardware=qcom \
     msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 sched_enable_hmp=1 sched_enable_power_aware=1 \
     service_locator.enable=1 swiotlb=1 androidboot.configfs=true androidboot.usbcontroller=a800000.dwc3 \
-loop.max_part=7 androidboot.selinux=permissive
+loop.max_part=7
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 BOARD_KERNEL_PAGESIZE := 4096
+#TARGET_PREBUILT_KERNEL := $(COMMON_PATH)/prebuilt/Image.gz-dtb
 TARGET_KERNEL_SOURCE := kernel/nokia/sdm660
 TARGET_KERNEL_CLANG_COMPILE := true
 #TARGET_KERNEL_CLANG_VERSION := r383902b
@@ -142,9 +147,10 @@ TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
 
 # Sepolicy
 #include device/qcom/sepolicy-legacy-um/SEPolicy.mk
-
-BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(COMMON_PATH)/sepolicy/private
+SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/private
+#BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(COMMON_PATH)/sepolicy/private
 #BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
+
 
 # Vendor Security Patch Level
 VENDOR_SECURITY_PATCH := 2021-04-01

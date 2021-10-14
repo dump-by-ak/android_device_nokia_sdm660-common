@@ -167,6 +167,10 @@ ro.telephony.default_network=22,22
 # Recovery
 ro.recovery.ui.blank_unblank_on_init=true
 
+# SoC
+ro.soc.manufacturer=Qualcomm
+ro.soc.model=MSM8998
+
 # Sensors
 ro.vendor.sdk.sensors.gestures=false
 ro.vendor.sensors.cmc=false
