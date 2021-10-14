@@ -99,21 +99,10 @@ PRODUCT_COPY_FILES += \
 
 # Audio
 PRODUCT_PACKAGES += \
-    android.hardware.audio@5.0-impl \
+    PRODUCT_PACKAGES += \
+    android.hardware.audio@6.0-impl \
     android.hardware.audio.service \
-    android.hardware.audio.effect@5.0-impl \
-    android.hardware.audio.effect@7.0-impl \
-    android.hardware.audio4.0-service.vendor \
-    android.hardware.audio@2.0-service.vendor \
-    android.hardware.audio.common@4.0.vendor \
-    android.hardware.audio.common@5.0.vendor \
-    android.hardware.audio.common@6.0.vendor \
-    android.hardware.audio@2.0.vendor \
-    android.hardware.audio@4.0.vendor \
-    android.hardware.audio@5.0.vendor \
-    android.hardware.audio@6.0.vendor \
-    android.hardware.audio@2.0-service \
-    android.hardware.audio4.0-service \
+    android.hardware.audio.effect@6.0-impl \
     android.hardware.soundtrigger@2.2-impl \
     audio.a2dp.default \
     audio.primary.sdm660 \
@@ -126,7 +115,8 @@ PRODUCT_PACKAGES += \
     libqcomvoiceprocessing \
     libvolumelistener \
     tinymix.vendor \
-    tinyplay.vendor
+    tinyplay.vendor \
+    libtinyxml
 
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
@@ -181,6 +171,7 @@ PRODUCT_COPY_FILES += \
 
 # Display
 PRODUCT_PACKAGES += \
+    android.frameworks.displayservice@1.0.vendor \
     android.hardware.graphics.allocator@2.0-impl:64 \
     android.hardware.graphics.allocator@2.0-service \
     android.hardware.graphics.composer@2.1-impl:64 \
@@ -199,7 +190,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
     android.hardware.drm@1.0-service \
-    android.hardware.drm@1.4-service.clearkey
+    android.hardware.drm@1.4-service.clearkey \
+    android.hardware.drm@1.4.vendor
 
 # DPM
 PRODUCT_PACKAGES += \
@@ -214,6 +206,7 @@ PRODUCT_PACKAGES += \
     FM2 \
     libqcomfm_jni \
     qcom.fmradio
+
 # Framework Detect
 PRODUCT_PACKAGES += \
     libqti_vndfwk_detect \
@@ -249,6 +242,7 @@ PRODUCT_PACKAGES += \
 #init Sripts
 PRODUCT_PACKAGES += \
     init.logcat.rc
+
 # IPACM
 PRODUCT_PACKAGES += \
     ipacm \
@@ -277,6 +271,11 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/keylayout/goodix_fp.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/goodix_fp.kl \
     $(COMMON_PATH)/keylayout/uinput-fpc.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/uinput-fpc.kl
 
+# Keystore
+PRODUCT_PACKAGES += \
+    android.hardware.gatekeeper@1.0.vendor \
+    android.hardware.keymaster@4.0.vendor
+
 # Lights
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-impl \
@@ -284,6 +283,9 @@ PRODUCT_PACKAGES += \
     lights.sdm660
 
 #Media
+PRODUCT_PACKAGES += \
+    android.hardware.media.c2@1.1.vendor
+
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/media/media_profiles_V1_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml \
     $(COMMON_PATH)/media/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
@@ -299,6 +301,11 @@ PRODUCT_PACKAGES += \
     android.system.net.netd@1.0 \
     libandroid_net \
     netutils-wrapper-1.0
+
+# Network
+PRODUCT_PACKAGES += \
+    android.hardware.neuralnetworks@1.3.vendor \
+    android.system.net.netd@1.1.vendor
 
 # OMX
 PRODUCT_PACKAGES += \
@@ -340,10 +347,13 @@ PRODUCT_COPY_FILES += \
 
 # Radio
 PRODUCT_PACKAGES += \
+    android.hardware.radio.config@1.2.vendor \
+    android.hardware.radio.deprecated@1.0.vendor \
     android.hardware.radio@1.4 \
     android.hardware.radio@1.2 \
     android.hardware.radio.config@1.0 \
     android.hardware.secure_element@1.0 \
+    android.hardware.secure_element@1.0.vendor \
     librmnetctl \
     libprotobuf-cpp-full \
     libxml2
@@ -399,7 +409,7 @@ PRODUCT_PACKAGES += \
     telephony-ext
 
 #PRODUCT_BOOT_JARS += \
-#    telephony-ext
+    telephony-ext
 
 # Update engine
 PRODUCT_PACKAGES += \
@@ -448,7 +458,6 @@ PRODUCT_COPY_FILES += \
 
 #trail
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.1.vendor \
     android.hardware.bluetooth@1.0.vendor \
     android.frameworks.displayservice@1.0.vendor \
     android.hardware.drm@1.4.vendor \
