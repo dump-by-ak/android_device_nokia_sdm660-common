@@ -96,7 +96,6 @@ loop.max_part=7
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 BOARD_KERNEL_PAGESIZE := 4096
-#TARGET_PREBUILT_KERNEL := $(COMMON_PATH)/prebuilt/Image.gz-dtb
 TARGET_KERNEL_SOURCE := kernel/nokia/sdm660
 TARGET_KERNEL_CLANG_COMPILE := true
 #TARGET_KERNEL_CLANG_VERSION := r383902b
@@ -148,8 +147,9 @@ TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
 # Sepolicy
 #include device/qcom/sepolicy-legacy-um/SEPolicy.mk
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/private
+
 #BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(COMMON_PATH)/sepolicy/private
-#BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
+BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
 
 
 # Vendor Security Patch Level
