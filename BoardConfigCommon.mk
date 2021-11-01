@@ -15,12 +15,6 @@
 #
 
 BOARD_VENDOR := nokia
-COMMON_PATH := device/xiaomi/sdm660-common
-
-# Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := sdm660
-TARGET_NO_BOOTLOADER := true
-
 
 COMMON_PATH := device/nokia/sdm660-common
 
@@ -41,7 +35,9 @@ TARGET_NO_BOOTLOADER := true
 # Build System
 BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
+BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
 RELAX_USES_LIBRARY_CHECK := true
+BUILD_BROKEN_USES_BUILD_COPY_HEADERS := true
 
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "qualcomm-hidl"
@@ -58,7 +54,7 @@ AB_OTA_PARTITIONS += \
 AUDIO_FEATURE_ENABLED_EXTENDED_COMPRESS_FORMAT := true
 BOARD_SUPPORTS_SOUND_TRIGGER := true
 BOARD_USES_ALSA_AUDIO := true
-USE_CUSTOM_AUDIO_POLICY := 1
+USE_CUSTOM_AUDIO_POLICY := 0
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(COMMON_PATH)/bluetooth
@@ -96,12 +92,13 @@ BOARD_KERNEL_CMDLINE := \
     console=ttyMSM0,115200,n8 androidboot.console=ttyMSM0 earlycon=msm_serial_dm,0xc170000 androidboot.hardware=qcom \
     msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 sched_enable_hmp=1 sched_enable_power_aware=1 \
     service_locator.enable=1 swiotlb=1 androidboot.configfs=true androidboot.usbcontroller=a800000.dwc3 \
-    loop.max_part=7
+loop.max_part=7
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 BOARD_KERNEL_PAGESIZE := 4096
 TARGET_KERNEL_SOURCE := kernel/nokia/sdm660
 TARGET_KERNEL_CLANG_COMPILE := true
-TARGET_KERNEL_CLANG_VERSION := r416183b1
+#TARGET_KERNEL_CLANG_VERSION := r383902b
 
 # Properties
 TARGET_ODM_PROP += $(COMMON_PATH)/odm.prop
@@ -148,10 +145,12 @@ BOARD_ROOT_EXTRA_SYMLINKS := \
 TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
 
 # Sepolicy
-include device/qcom/sepolicy-legacy-um/SEPolicy.mk
-
+#include device/qcom/sepolicy-legacy-um/SEPolicy.mk
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/private
+
+#BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(COMMON_PATH)/sepolicy/private
 BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
+
 
 # Vendor Security Patch Level
 VENDOR_SECURITY_PATCH := 2021-04-01

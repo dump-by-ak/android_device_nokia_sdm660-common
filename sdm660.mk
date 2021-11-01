@@ -28,6 +28,11 @@ DEVICE_PACKAGE_OVERLAYS += \
 
 PRODUCT_ENFORCE_RRO_TARGETS += *
 
+#aa
+PRODUCT_BOARD_PLATFORM := sdm660
+PRODUCT_USES_QCOM_HARDWARE := true
+PRODUCT_VENDOR_KERNEL_HEADERS := hardware/qcom/msm8998/kernel-headers
+
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.bluetooth.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth.xml \
@@ -94,6 +99,7 @@ PRODUCT_COPY_FILES += \
 
 # Audio
 PRODUCT_PACKAGES += \
+    PRODUCT_PACKAGES += \
     android.hardware.audio@6.0-impl \
     android.hardware.audio.service \
     android.hardware.audio.effect@6.0-impl \
@@ -129,9 +135,8 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
-    android.hardware.bluetooth@1.0 \
-	android.hardware.bluetooth@1.0.vendor \
-    audio.bluetooth.default \
+   android.hardware.bluetooth@1.0 \
+   audio.bluetooth.default \
     android.hardware.bluetooth.audio@2.0-impl \
     vendor.qti.hardware.btconfigstore@1.0.vendor
 
@@ -166,7 +171,7 @@ PRODUCT_COPY_FILES += \
 
 # Display
 PRODUCT_PACKAGES += \
-	android.frameworks.displayservice@1.0.vendor \
+    android.frameworks.displayservice@1.0.vendor \
     android.hardware.graphics.allocator@2.0-impl:64 \
     android.hardware.graphics.allocator@2.0-service \
     android.hardware.graphics.composer@2.1-impl:64 \
@@ -186,7 +191,7 @@ PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
     android.hardware.drm@1.0-service \
     android.hardware.drm@1.4-service.clearkey \
-	android.hardware.drm@1.4.vendor
+    android.hardware.drm@1.4.vendor
 
 # DPM
 PRODUCT_PACKAGES += \
@@ -209,9 +214,7 @@ PRODUCT_PACKAGES += \
 
 # GPS
 PRODUCT_PACKAGES += \
-    libwifi-hal-ctrl \
-	android.hardware.gnss@2.1.vendor \
-    libpdmapper.so
+    libwifi-hal-ctrl
 
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/gps/apdr.conf:$(TARGET_COPY_OUT_VENDOR)/etc/apdr.conf \
@@ -236,6 +239,10 @@ PRODUCT_PACKAGES += \
     libhwbinder \
     libhwbinder.vendor
 
+#init Sripts
+PRODUCT_PACKAGES += \
+    init.logcat.rc
+
 # IPACM
 PRODUCT_PACKAGES += \
     ipacm \
@@ -252,6 +259,10 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf \
     $(COMMON_PATH)/configs/msm_irqbalance_sdm630.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance_sdm630.conf
 
+#keymaster
+PRODUCT_PACKAGES += \
+    android.hardware.keymaster@4.0-impl \
+    android.hardware.keymaster@4.0-service
 
 # Keylayout
 PRODUCT_COPY_FILES += \
@@ -259,12 +270,6 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/keylayout/ff_key.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/ff_key.kl \
     $(COMMON_PATH)/keylayout/goodix_fp.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/goodix_fp.kl \
     $(COMMON_PATH)/keylayout/uinput-fpc.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/uinput-fpc.kl
-
-#keymaster
-PRODUCT_PACKAGES += \
-	android.hardware.keymaster@1.0.vendor \
-    android.hardware.keymaster@4.0-impl \
-    android.hardware.keymaster@4.0-service
 
 # Keystore
 PRODUCT_PACKAGES += \
@@ -277,11 +282,10 @@ PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service \
     lights.sdm660
 
-# LiveDisplay
+#Media
 PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@2.0-service-sdm
+    android.hardware.media.c2@1.1.vendor
 
-# Media
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/media/media_profiles_V1_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml \
     $(COMMON_PATH)/media/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
@@ -291,9 +295,6 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video.xml
-
-PRODUCT_PACKAGES += \
-  android.hardware.media.c2@1.1.vendor
 
 # Net
 PRODUCT_PACKAGES += \
@@ -346,14 +347,13 @@ PRODUCT_COPY_FILES += \
 
 # Radio
 PRODUCT_PACKAGES += \
+    android.hardware.radio.config@1.2.vendor \
+    android.hardware.radio.deprecated@1.0.vendor \
     android.hardware.radio@1.4 \
-	 android.hardware.radio@1.4.vendor \
     android.hardware.radio@1.2 \
     android.hardware.radio.config@1.0 \
     android.hardware.secure_element@1.0 \
-	android.hardware.secure_element@1.0.vendor \
-	android.hardware.radio.config@1.2.vendor \
-    android.hardware.radio.deprecated@1.0.vendor \
+    android.hardware.secure_element@1.0.vendor \
     librmnetctl \
     libprotobuf-cpp-full \
     libxml2
@@ -396,8 +396,8 @@ PRODUCT_COPY_FILES += \
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
-    $(COMMON_PATH)
-
+    $(COMMON_PATH) \
+    vendor/qcom/opensource/power
 # Telephony-ext
 PRODUCT_PACKAGES += \
     ims-ext-common \
@@ -408,12 +408,8 @@ PRODUCT_PACKAGES += \
     qti_telephony_utils.xml \
     telephony-ext
 
-PRODUCT_BOOT_JARS += \
+#PRODUCT_BOOT_JARS += \
     telephony-ext
-
-# Trust
-PRODUCT_PACKAGES += \
-    vendor.lineage.trust@1.0-service
 
 # Update engine
 PRODUCT_PACKAGES += \
@@ -438,6 +434,9 @@ PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.0-impl \
     android.hardware.vibrator@1.0-service
 
+#vndk
+#PRODUCT_EXTRA_VNDK_VERSIONS := 31
+
 # Weaver
 PRODUCT_PACKAGES += \
     android.hardware.weaver@1.0
@@ -456,3 +455,11 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
     $(COMMON_PATH)/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf \
     $(COMMON_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini
+
+#trail
+PRODUCT_PACKAGES += \
+    android.hardware.bluetooth@1.0.vendor \
+    android.hardware.keymaster@1.0.vendor \
+    android.hardware.radio@1.4.vendor \
+    android.hardware.gnss@2.1.vendor \
+    libpdmapper.so

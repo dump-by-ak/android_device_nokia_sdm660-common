@@ -155,12 +155,11 @@ keyguard.no_require_sim=true
 persist.vendor.radio.apm_sim_not_pwdn=1
 persist.vendor.radio.custom_ecc=1
 persist.vendor.radio.procedure_bytes=SKIP
-persist.vendor.radio.data_con_rprt=1
-persist.vendor.radio.mt_sms_ack=30
 persist.vendor.radio.rat_on=combine
 persist.vendor.radio.sib16_support=1
 rild.libpath=/system/vendor/lib64/libril-qc-qmi-1.so
 ro.carrier=unknown
+#ro.com.android.dataroaming=true
 ro.telephony.iwlan_operation_mode=legacy
 ro.vendor.qti.va_aosp.support=1
 ro.telephony.default_network=22,22
@@ -168,22 +167,19 @@ ro.telephony.default_network=22,22
 # Recovery
 ro.recovery.ui.blank_unblank_on_init=true
 
+# SoC
+ro.soc.manufacturer=Qualcomm
+ro.soc.model=MSM8998
+
 # Sensors
 ro.vendor.sdk.sensors.gestures=false
 ro.vendor.sensors.cmc=false
 ro.vendor.sensors.facing=false
 
-# SoC
-ro.soc.manufacturer=Qualcomm
-ro.soc.model=SDM660
-
 # Stagefright
 debug.stagefright.omx_default_rank.sw-audio=1
 debug.stagefright.omx_default_rank=0
 vendor.video.disable.ubwc=1
-
-# Time
-persist.vendor.delta_time.enable=true
 
 # Wi-Fi
 ro.boot.wificountrycode=US
