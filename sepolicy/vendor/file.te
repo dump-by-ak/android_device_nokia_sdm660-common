@@ -16,9 +16,9 @@ type sysfs_msm_subsys, sysfs_type, fs_type;
 
 #temp
 
-type adsprpcd_file, file_type;
-type bt_firmware_file, file_type;
-type firmware_file, file_type;
-type persist_file, file_type;
-type custom_ab_block_device, file_type;
-type nfc_vendor_data_file, file_type;
+#type adsprpcd_file, file_type;
+#type bt_firmware_file, file_type;
+#type firmware_file, file_type;
+#type persist_file, file_type;
+#type custom_ab_block_device, file_type;
+#type nfc_vendor_data_file, file_type;
